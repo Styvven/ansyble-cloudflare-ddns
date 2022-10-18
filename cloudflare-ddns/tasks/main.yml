@@ -1,0 +1,11 @@
+---
+- name: Create a cloudflare-ddns container
+  docker_container:
+    name: cloudflare-ddns
+    image: oznu/cloudflare-ddns:latest
+    state: started
+    restart_policy: always
+    env:
+      API_KEY: "{{ cloudflare_api_key }}"
+      ZONE: "{{ domain }}"
+      PROXIED: "false"
